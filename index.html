@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baralho de Receitas de Air Fryer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EFDE;
+    --cream-dark:#EDE2C9;
+    --ink:#241C15;
+    --ink-soft:#4A3E30;
+    --terracotta:#D9722E;
+    --terracotta-dark:#B65A1E;
+    --sage:#71875E;
+    --sage-dark:#57683F;
+    --rose:#D98BA0;
+    --gold:#C08A1E;
+    --card-shadow: 6px 6px 0 rgba(36,28,21,0.12);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.12;
+  }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  /* ---------- texture ---------- */
+  .grain{
+    position:relative;
+  }
+  .grain::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(36,28,21,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+    pointer-events:none;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    padding:22px 0;
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:0.2px;
+  }
+  .brand span{color:var(--terracotta);}
+  header .tag{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:28px 0 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .kicker .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--terracotta);
+  }
+  .hero h1{
+    font-size:2.7rem;
+    max-width:11.5ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--terracotta);
+  }
+  .hero .sub{
+    margin-top:20px;
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    max-width:44ch;
+  }
+  .hero .cta-row{
+    margin-top:30px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--terracotta);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+    padding:16px 30px;
+    border-radius:9px;
+    text-decoration:none;
+    box-shadow:0 4px 0 var(--terracotta-dark);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{
+    transform:translateY(2px);
+    box-shadow:0 2px 0 var(--terracotta-dark);
+  }
+  .price-note{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .price-note strong{color:var(--ink);}
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    justify-content:center;
+  }
+  .hero-visual img{
+    width:100%;
+    max-width:430px;
+    filter:drop-shadow(0 24px 28px rgba(36,28,21,0.22));
+  }
+  .hero-visual .badge{
+    position:absolute;
+    top:6%;
+    right:2%;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:0.95rem;
+    width:96px; height:96px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    line-height:1.15;
+    transform:rotate(8deg);
+    box-shadow:var(--card-shadow);
+  }
+
+  /* ---------- section shell ---------- */
+  section{
+    padding:64px 0;
+  }
+  .section-head{
+    max-width:56ch;
+    margin-bottom:38px;
+  }
+  .section-head h2{
+    font-size:2rem;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  /* ---------- what is it ---------- */
+  .intro{
+    background:var(--ink);
+    color:var(--cream);
+  }
+  .intro h2{color:var(--cream); font-size:1.9rem; max-width:20ch;}
+  .intro .lede{
+    max-width:60ch;
+    font-size:1.15rem;
+    color:#D8CBB4;
+    margin-top:16px;
+  }
+  .steps{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .step{
+    border-top:2px solid rgba(246,239,222,0.25);
+    padding-top:16px;
+  }
+  .step .num{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--terracotta);
+    display:block;
+    margin-bottom:10px;
+  }
+  .step h3{
+    color:var(--cream);
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .step p{
+    color:#C9BBA1;
+    font-size:0.95rem;
+  }
+
+  /* ---------- categories ---------- */
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .cat-card{
+    background:var(--cream-dark);
+    border-radius:var(--radius);
+    padding:26px 22px;
+    border-top:6px solid var(--terracotta);
+    box-shadow:var(--card-shadow);
+  }
+  .cat-card:nth-child(2){border-top-color:var(--sage);}
+  .cat-card:nth-child(3){border-top-color:var(--rose);}
+  .cat-card:nth-child(4){border-top-color:var(--ink);}
+  .cat-card .count{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    color:var(--ink);
+  }
+  .cat-card .count span{font-size:1rem; color:var(--ink-soft); font-family:'Work Sans',sans-serif;}
+  .cat-card h3{
+    margin-top:6px;
+    font-size:1.2rem;
+  }
+  .cat-card p{
+    margin-top:8px;
+    font-size:0.95rem;
+    color:var(--ink-soft);
+  }
+  .card-detail{
+    margin-top:36px;
+    background:var(--cream);
+    border:1.5px dashed var(--ink-soft);
+    border-radius:var(--radius);
+    padding:20px 24px;
+    font-size:0.98rem;
+    color:var(--ink-soft);
+  }
+  .card-detail strong{color:var(--ink);}
+
+  /* ---------- for who ---------- */
+  .forwho{
+    background:var(--cream-dark);
+  }
+  .forwho-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 32px;
+  }
+  .forwho-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:16px 0;
+    border-bottom:1px solid rgba(36,28,21,0.12);
+  }
+  .forwho-item .mark{
+    flex:none;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--sage);
+    color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.85rem;
+    margin-top:2px;
+  }
+  .forwho-item p{font-size:1rem; color:var(--ink-soft);}
+
+  /* ---------- how it works ---------- */
+  .flow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .flow-card{
+    background:var(--cream);
+    border:1.5px solid rgba(36,28,21,0.15);
+    border-radius:var(--radius);
+    padding:28px 22px;
+    position:relative;
+  }
+  .flow-card .num{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    color:var(--terracotta);
+    margin-bottom:10px;
+    display:block;
+  }
+  .flow-card h3{font-size:1.1rem; margin-bottom:8px;}
+  .flow-card p{color:var(--ink-soft); font-size:0.96rem;}
+
+  /* ---------- what you get ---------- */
+  .getlist{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 30px;
+  }
+  .getlist li{
+    list-style:none;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-size:1.02rem;
+  }
+  .getlist li::before{
+    content:"✓";
+    color:var(--sage-dark);
+    font-weight:700;
+    flex:none;
+  }
+
+  /* ---------- bonuses ---------- */
+  .bonus-section .section-head{margin-bottom:30px;}
+  .bonus-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .bonus-card{
+    background:linear-gradient(160deg, #FBF0D6, var(--cream-dark));
+    border:2px solid var(--gold);
+    border-radius:var(--radius);
+    padding:28px;
+    position:relative;
+    box-shadow:var(--card-shadow);
+  }
+  .bonus-card .ribbon{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--cream);
+    font-size:0.78rem;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:20px;
+    margin-bottom:14px;
+    letter-spacing:0.3px;
+  }
+  .bonus-card h3{font-size:1.25rem; margin-bottom:10px;}
+  .bonus-card p{color:var(--ink-soft); font-size:0.98rem;}
+  .bonus-card .price{
+    margin-top:16px;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .bonus-card .price .old{
+    text-decoration:line-through;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+  .bonus-card .price .new{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--sage-dark);
+    font-size:1.05rem;
+  }
+
+  /* ---------- offer ---------- */
+  .offer{
+    background:var(--ink);
+    color:var(--cream);
+    position:relative;
+  }
+  .offer .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .offer-card{
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:20px;
+    padding:40px 36px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  }
+  .offer-card .old-price{
+    color:var(--ink-soft);
+    text-decoration:line-through;
+    font-size:1.1rem;
+  }
+  .offer-card .price-big{
+    font-family:'Fraunces', serif;
+    font-size:3.2rem;
+    color:var(--terracotta-dark);
+    margin:4px 0 4px;
+  }
+  .offer-card .price-caption{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .offer-card ul{
+    margin-bottom:26px;
+  }
+  .offer-card ul li{
+    list-style:none;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:7px 0;
+    font-size:0.97rem;
+    border-bottom:1px dashed rgba(36,28,21,0.15);
+  }
+  .offer-card ul li:last-child{border-bottom:none;}
+  .offer-card ul li::before{
+    content:"✓";
+    color:var(--sage-dark);
+    font-weight:700;
+    flex:none;
+  }
+  .offer-card .btn{
+    width:100%;
+    text-align:center;
+    padding:18px;
+    font-size:1.08rem;
+  }
+  .guarantee-note{
+    margin-top:16px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  .offer-copy h2{color:var(--cream); font-size:2rem; max-width:14ch;}
+  .offer-copy p{color:#D8CBB4; margin-top:16px; font-size:1.05rem; max-width:38ch;}
+  .offer-copy .guarantee{
+    margin-top:28px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:rgba(246,239,222,0.08);
+    border:1px solid rgba(246,239,222,0.2);
+    border-radius:12px;
+    padding:18px 20px;
+  }
+  .offer-copy .guarantee .icon{
+    font-size:1.4rem;
+  }
+  .offer-copy .guarantee p{color:#E8DFC9; font-size:0.95rem; margin:0;}
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:36px 0 50px;
+    text-align:center;
+  }
+  footer p{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 auto;
+  }
+  footer .btn{
+    margin-bottom:20px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr; text-align:left;}
+    .hero-visual{order:-1;}
+    .hero h1{font-size:2.1rem; max-width:none;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .cat-grid{grid-template-columns:1fr 1fr;}
+    .forwho-grid{grid-template-columns:1fr;}
+    .flow{grid-template-columns:1fr;}
+    .getlist{grid-template-columns:1fr;}
+    .bonus-grid{grid-template-columns:1fr;}
+    .offer .wrap{grid-template-columns:1fr;}
+    .offer-copy{order:2;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Baralho<span>.</span>AirFryer</div>
+    <div class="tag">Entrega imediata por e-mail</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="kicker"><span class="dot"></span>Baralho imprimível · 4 categorias · Entrega imediata</div>
+      <h1>60 cartas de receitas de air fryer para <em>nunca mais</em> ficar sem ideia</h1>
+      <p class="sub">Receitas organizadas por categoria — doces, salgados, lanches e pratos principais. Cada carta com ingredientes, tempo e temperatura. Sorteia ou escolhe, e já sabe o que fazer.</p>
+      <div class="cta-row">
+        <a href="https://pay.cakto.com.br/xbjb2bk_1083906" class="btn">Quero o baralho — R$ 9,90</a>
+        <span class="price-note">De <strong>R$ 41,80</strong> por R$ 9,90</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="badge">7 dias de garantia</div>
+      <img src="hero-mockup.png" alt="Baralho de Receitas de Air Fryer com cartas ilustradas espalhadas, caixa do produto e visualização em celular e tablet">
+    </div>
+  </div>
+</section>
+
+<section class="intro grain">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Não é mais um livro de receitas genérico. É um baralho feito só pra air fryer.</h2>
+      <p class="lede">Você não precisa mais adaptar receita de forno pra air fryer no chute. É um PDF de 60 cartas — cada uma já vem com ingredientes, tempo exato e temperatura certa pra air fryer, sem adaptação.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Escolhe a categoria</h3>
+        <p>Doces, salgados, lanches ou pratos principais.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Embaralha e tira uma carta</h3>
+        <p>Ou escolhe direto. Cada carta é uma receita completa e independente.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Segue tempo e temperatura</h3>
+        <p>Sem precisar pesquisar quanto tempo aquele alimento leva na air fryer.</p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h3>Guarda pra próxima refeição</h3>
+        <p>Nunca fica sem ideia do que fazer com o que tem na geladeira.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>O que vem no baralho</h2>
+      <p>4 categorias, 15 cartas em cada uma.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="count">15<span> cartas</span></div>
+        <h3>Doces</h3>
+        <p>Sobremesas e lanches doces prontos em minutos na air fryer.</p>
+      </div>
+      <div class="cat-card">
+        <div class="count">15<span> cartas</span></div>
+        <h3>Salgados</h3>
+        <p>Petiscos e salgadinhos crocantes sem fritar em óleo.</p>
+      </div>
+      <div class="cat-card">
+        <div class="count">15<span> cartas</span></div>
+        <h3>Lanches</h3>
+        <p>Sanduíches, wraps e opções rápidas pro dia a dia.</p>
+      </div>
+      <div class="cat-card">
+        <div class="count">15<span> cartas</span></div>
+        <h3>Pratos principais</h3>
+        <p>Carnes, aves, peixes e acompanhamentos completos.</p>
+      </div>
+    </div>
+    <div class="card-detail">
+      Cada carta traz <strong>nome da receita, lista de ingredientes, modo de preparo, tempo e temperatura exatos</strong> — nada de adivinhar ou pesquisar no meio do preparo.
+    </div>
+  </div>
+</section>
+
+<section class="forwho">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pra quem é</h2>
+      <p>Se você se reconhece em algum desses pontos, o baralho é pra você.</p>
+    </div>
+    <div class="forwho-grid">
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Comprou a air fryer e usa sempre a mesma receita porque não sabe o que mais fazer.</p>
+      </div>
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Sempre erra tempo e temperatura tentando adaptar receita de forno.</p>
+      </div>
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Quer variar o cardápio da semana sem ficar pesquisando receita toda hora.</p>
+      </div>
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Prefere cozinhar sem óleo mas sente falta de variedade de prato.</p>
+      </div>
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Tem pouco tempo e quer receita rápida, sem passo complicado.</p>
+      </div>
+      <div class="forwho-item">
+        <span class="mark">✓</span>
+        <p>Quer um material físico pra consultar na cozinha, sem depender do celular com a mão suja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Como funciona</h2>
+    </div>
+    <div class="flow">
+      <div class="flow-card">
+        <span class="num">01</span>
+        <h3>Compra</h3>
+        <p>Pagamento único, recebe o PDF na hora.</p>
+      </div>
+      <div class="flow-card">
+        <span class="num">02</span>
+        <h3>Imprime e recorta</h3>
+        <p>60 cartas em formato A6, prontas pra folha A4.</p>
+      </div>
+      <div class="flow-card">
+        <span class="num">03</span>
+        <h3>Escolhe ou sorteia</h3>
+        <p>Segue o tempo e a temperatura indicados na carta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="whatyouget">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>O que você recebe</h2>
+    </div>
+    <ul class="getlist">
+      <li>60 cartas em PDF, prontas pra imprimir em casa</li>
+      <li>4 categorias, 15 cartas cada</li>
+      <li>Ingredientes, modo de preparo, tempo e temperatura em cada carta</li>
+      <li>Formato A6 — 4 cartas por folha A4</li>
+      <li>Receitas testadas especificamente pra air fryer, sem adaptação</li>
+    </ul>
+  </div>
+</section>
+
+<section class="bonus-section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Bônus inclusos</h2>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <span class="ribbon">Bônus 1</span>
+        <h3>Guia de Tempo e Temperatura por Tipo de Alimento</h3>
+        <p>Uma tabela de referência rápida com tempo e temperatura de air fryer pros alimentos mais comuns que não estão nas 60 receitas — pra você nunca mais pesquisar isso no Google.</p>
+        <div class="price"><span class="old">R$ 17,90</span><span class="new">Incluso no baralho</span></div>
+      </div>
+      <div class="bonus-card">
+        <span class="ribbon">Bônus 2</span>
+        <h3>Cartela de Substituições de Ingredientes</h3>
+        <p>Uma cartela prática com substituições comuns de ingredientes, pra você adaptar qualquer receita do baralho ao que tiver disponível em casa.</p>
+        <div class="price"><span class="old">R$ 14,90</span><span class="new">Incluso no baralho</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer grain" id="oferta">
+  <div class="wrap">
+    <div class="offer-copy">
+      <h2>Tudo isso por R$ 9,90</h2>
+      <p>Um pagamento único, entrega imediata no seu e-mail, e 60 receitas prontas pra air fryer sempre à mão.</p>
+      <div class="guarantee">
+        <span class="icon">🛡️</span>
+        <p>Garantia de 7 dias. Não gostou, o dinheiro volta — sem burocracia.</p>
+      </div>
+    </div>
+    <div class="offer-card">
+      <div class="old-price">De R$ 41,80</div>
+      <div class="price-big">R$ 9,90</div>
+      <div class="price-caption">Pagamento único</div>
+      <ul>
+        <li>60 cartas de receitas de air fryer em PDF</li>
+        <li>Bloco Doces — 15 cartas completas</li>
+        <li>Bloco Salgados — 15 cartas completas</li>
+        <li>Bloco Lanches — 15 cartas completas</li>
+        <li>Bloco Pratos Principais — 15 cartas completas</li>
+        <li>Ingredientes, tempo e temperatura em cada carta</li>
+        <li>Formato A6 pronto pra imprimir</li>
+        <li>Bônus 1 — Guia de Tempo e Temperatura por Tipo de Alimento</li>
+        <li>Bônus 2 — Cartela de Substituições de Ingredientes</li>
+        <li>Entrega imediata por e-mail</li>
+        <li>Garantia incondicional de 7 dias</li>
+      </ul>
+      <a href="https://pay.cakto.com.br/xbjb2bk_1083906" class="btn">Quero o baralho — R$ 9,90</a>
+      <div class="guarantee-note">Compra 100% segura · Garantia incondicional de 7 dias</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://pay.cakto.com.br/xbjb2bk_1083906" class="btn">Quero o baralho — R$ 9,90</a>
+  <p>Este produto é um material culinário de apoio e não substitui as orientações do manual do fabricante do seu aparelho. Garantia incondicional de 7 dias.</p>
+</footer>
+
+</body>
+</html>
